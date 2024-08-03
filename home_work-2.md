@@ -59,7 +59,6 @@ Tiger
 24) Скопировать содержимое storage/household_chemicals/ в директорию shipment
 25) Выполнить команды tree -a shipment и tree -a storage
 # Часть 2
-# Часть 3: Повторение темы "Работа с файлами и директориями"
 1) Создать в домашней директории папку home_works
 2) В home_works создать директорию seaport
 3) В директории seaport создать директории departments, areas, journal_lists
