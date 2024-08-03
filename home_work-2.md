@@ -1,3 +1,4 @@
+# Часть 1
 1) Удалить директорию lab01
 2) Создать директорию lab_1
 3) В lab_1 создать директорию storage
@@ -57,3 +58,36 @@ Tiger
 23) Скопировать директорию storage/toys/ в директорию shipment
 24) Скопировать содержимое storage/household_chemicals/ в директорию shipment
 25) Выполнить команды tree -a shipment и tree -a storage
+# Часть 2
+# Часть 3: Повторение темы "Работа с файлами и директориями"
+1) Создать в домашней директории папку home_works
+2) В home_works создать директорию seaport
+3) В директории seaport создать директории departments, areas, journal_lists
+4) В директории departments создать файл dep_list с содержимым
+```
+1. Pilotage service
+2. Traffic management service
+3. Tugboat service
+4. Hydrographic service
+5. Emergency rescue service
+6. Security service
+```
+5) В директории areas создать файл area_list с содержимым
+```
+1. An external raid
+2. Internal raid
+3. Gateways
+4. Mooring lines
+5. Warehouses
+6. Administrative and industrial buildings
+7. Ship repair area
+```
+6) В директории journal_lists создать файл с именем copy_list 
+7) Вывести полученную структуру командой tree
+8) В home_works создать директорию seaport_backup
+9) Скопировать содержимое seaport в seaport_backup
+10) В home_works создать директорию backups
+11) Переместить seaport_backup в backups
+12) Переименовать seaport_backup в copy_seaport 
+13) Создать файл list_of_bk в директории home_works и записать в него вывод команды ```ls -1 backups```
+14) Скопировать файл list_of_bk в директорию journal_lists
