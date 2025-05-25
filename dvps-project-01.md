@@ -2,23 +2,30 @@
 - login
 - pass
 - ip
-2) Установить на ВМ пакеты `python3-pip python3-venv nginx git`
-3) В директории `/var/www` создать директорию `dvps-01`
-4) В директории `dvps-01` создать файл `app.py` с содержимым
+2) В директории `/var/www` создать директорию `dvps-01`
+3) В директории `dvps-01` создать файл `main.py` с содержимым
 ```
-from flask import Flask
-app = Flask(__name__)
+from fastapi import FastAPI
+from pydantic import BaseModel
 
-@app.route('/')
-def hello():
-    return "Hello DevOps World!"
+app = FastAPI()
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+# Модель для POST запроса
+class Item(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+
+# In-memory "база данных"
+fake_db = []
+
+# Корневой эндпоинт
+@app.get("/")
+async def read_root():
+    return {"message": "Hello World"}
 ```
-5) Инициализировать в директории `dvps-01` песочницу `venv` и установить `flask gunicorn`
-6) Запустить приложение `app.py` как фоновый процесс
+5) Запуск приложения осуществляется командой `uvicorn main:app --reload`
+6) Запустить приложение `main.py` как фоновый процесс; найти процесс; убить процесс
 7) Написать bash-скрипт по автоматизации разворачивания приложения
 8) Написать python скрипт, который будет проверять доступность приложения
----
-Запустить приложение как systemd unit
+
