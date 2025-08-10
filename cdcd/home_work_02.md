@@ -54,4 +54,20 @@ func main() {
 	http.ListenAndServe(":9200", nil)
 }
 ```
-И написать к нему pipeline, который  будет собирать image, пушить его в docker hub и деплоить его
+И написать к нему pipeline, который  будет собирать image, пушить его в docker hub, деплоить его и потом проверять его работоспособность с помощью запроса
+```bash
+curl http://localhost:9200/metrics
+```
+Пример ответа
+```json
+{
+  "status": "success",
+  "data": {
+    "metrics": {
+      "cpu_usage": 0.754,
+      "memory_usage": 34.21,
+      "thread_count": 287
+    }
+  }
+}
+```
