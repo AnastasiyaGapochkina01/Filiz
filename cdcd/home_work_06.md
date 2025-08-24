@@ -29,17 +29,17 @@ A simple API for managing online store products using Go, PostgreSQL, and Docker
 - `GET|POST|PUT|DELETE /customers`
 - `GET|POST|PUT|DELETE /orders`
 - `GET /metrics`
-  ```
+`
   {
      "product_count": 3,
      "request_count": 42,
      "uptime_sec": 1234
   }
-  ```
+`
 
-Поля для Product: `name`, `price`.
-Поля для Customer: `name`, `email`.
-Поля для Order: `customer_id`, `product_id`, `quantity`.
+- Поля для Product: `name`, `price`.
+- Поля для Customer: `name`, `email`.
+- Поля для Order: `customer_id`, `product_id`, `quantity`.
 
 
 ## Query examples
