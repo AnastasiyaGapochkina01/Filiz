@@ -64,3 +64,9 @@ A simple API for managing online store products using Go, PostgreSQL, and Docker
 
 5) Запушить ветку `feture-001` в `main` созданного выше репозитория
 6) Создать Pull Request и смержить изменения в `main`
+
+# Практика Jenkins
+Продумать структуру Jenkins pipeline для запущенного выше проекта: написать _все_ этапы и какие варианты реализации для них видишь 
+
+> [!WARNING]  
+> Реализовывать НЕ НАДО, только прикинуть план
