@@ -1,0 +1,34 @@
+services:
+  backend:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      PGUSER: "${DB_USER}"
+      PGPASSWORD: "${DB_PASS}"
+      PGHOST: "${DB_HOST}"
+      PGPORT: "${DB_PORT}"
+      PGDATABASE: "${DB_NAME}"
+      PGSSLMODE: "${SSL_MODE}"
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASS}"
+      POSTGRES_DB: "${DB_NAME}"
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U ${DB_USER} -d ${DB_PASS}'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
