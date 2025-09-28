@@ -1,3 +1,87 @@
+# Простое приложение
+**У нас есть код на python, который надо запустить в docker**
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/main")
+def main():
+    return "Hello admin"
+
+@app.get("/admin")
+def admin():
+    return "Some admin actions here"
+```
+Запускам контейнер с `python:3.12` и работаем прямо в нем
+```bash
+docker run -d -it python:3.12
+docker ps
+docker exec -it fc0143ec6f27 bash
+```
+
+<img width="834" height="359" alt="image" src="https://github.com/user-attachments/assets/8641ab67-5af4-44a0-b2d9-a4c09f6a598b" />
+
+Сразу установим себе текстовый редактор
+
+<img width="615" height="59" alt="image" src="https://github.com/user-attachments/assets/9b354e7a-72c5-4cfc-af87-0d4a8f437b41" />
+
+Создадим директорию для кода и перейдем туда
+
+<img width="598" height="64" alt="image" src="https://github.com/user-attachments/assets/9f76a5ea-49e8-44d3-9e1d-519972f17da6" />
+
+Создаем файл с кодом `main.py`
+
+Как запустить? Первое что приходит в голову - `python3 main.py`. Пробуем
+
+<img width="412" height="114" alt="image" src="https://github.com/user-attachments/assets/3f5bc499-d037-471b-809a-1a7b978a606f" />
+
+Ругается. Ставим `fastapi`
+```bash
+pip install fastapi
+```
+
+Снова пробеум и теперь вроде отработало, но фактически ничего не запустилось
+
+<img width="1433" height="302" alt="image" src="https://github.com/user-attachments/assets/9e70b90e-608b-4c6d-bb8d-ae2c980a01d6" />
+
+Идем в гугл спрашивать как запустить fastapi
+
+<img width="1440" height="327" alt="image" src="https://github.com/user-attachments/assets/0688c8f4-9d7d-49b1-9f0d-cd84bb9532ac" />
+
+Там нам предлагают например так https://fastapi.tiangolo.com/deployment/manually/#run-a-server-manually
+
+```bash
+fastapi run main.py
+```
+
+И на нас опять ругаются
+
+<img width="731" height="298" alt="image" src="https://github.com/user-attachments/assets/545e472a-e5b6-4be7-80ae-ec0c3da27aed" />
+
+Ставим `fastapi[standard]` и пробуем еще раз и есть контакт, запустилось
+
+<img width="1432" height="584" alt="image" src="https://github.com/user-attachments/assets/4eb1a634-4efd-4c3e-a8ea-2a432912d10a" />
+
+Теперь это нужно конвертировать в `Dockerfile`
+
+<img width="1440" height="360" alt="image" src="https://github.com/user-attachments/assets/3dcc5611-4a46-478b-8acb-02092b1f3650" />
+
+Собираем и пробуем запускать
+```bash
+docker build -t fastapi-ex .
+docker run -d -it -p 8000:8000 fastapi-ex
+docker ps
+
+curl 127.0.0.1:8000/main
+curl 127.0.0.1:8000/admin
+```
+
+<img width="1424" height="660" alt="image" src="https://github.com/user-attachments/assets/cc1e0663-3271-4c9d-bd29-91085fbfc892" />
+
+Победа 🏆
+
+# Приложение с БД
 **Нам дано некое приложение, например https://github.com/AnastasiyaGapochkina01/example-of-diploma. Необходимо запустить его в docker**
 ### Алгоритм действий
 #### Клонируем репозиторий
