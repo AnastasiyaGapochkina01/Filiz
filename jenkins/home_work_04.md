@@ -13,3 +13,5 @@
   - тестирование собранной версии
   - деплой новой версии на целевое окружение (только если отмечен чек-бокс run release)
  
+Моя реализация
+https://github.com/AnastasiyaGapochkina01/jenkins-jobs/blob/main/simple-pipelines/Jenkinsfile-info-app
